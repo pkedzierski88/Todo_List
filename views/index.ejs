@@ -1,13 +1,23 @@
 <%- include("partials/header.ejs") %>
 
 <div id="container">
-    <h1>Do Zrobienia:</h1>
-    <input type="text" placeholder="Dodaj nową rzecz" maxlength="30">
-    <ul>
-        <!-- <li>Rzeczy 1</li>
-        <li>Rzeczy 2</li>
-        <li>Rzeczy 3</li> -->
-    </ul>
+  <h1>Do Zrobienia:</h1>
+  <form action="/todos" method="POST">
+    <input
+      type="text"
+      name="text"
+      placeholder="Dodaj nowe zadanie"
+      maxlength="30"
+      autocomplete="off"
+      required
+    />
+  </form>
+  <ul>
+    <!-- Iterujemy po todos i wypisujemy wszystkie rekordy w formie listy -->
+    <% todos.forEach((todo) => { %>
+    <li><%= todo.text %></li>
+    <% }) %>
+  </ul>
 </div>
 
 <%- include("partials/footer.ejs") %>
