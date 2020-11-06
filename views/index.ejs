@@ -9,14 +9,19 @@
       placeholder="Dodaj nowe zadanie"
       maxlength="30"
       autocomplete="off"
+      autofocus="autofocus"
       required
     />
   </form>
   <ul>
     <!-- Iterujemy po todos i wypisujemy wszystkie rekordy w formie listy -->
-    <% todos.forEach((todo) => { %>
-    <li><%= todo.text %></li>
-    <% }) %>
+    <% todos.forEach((todo) => { %> 
+      <% if(todo.isDone === true) { %>
+        <li class="completed"><%= todo.text %></li>
+      <% } else { %>
+        <li><%= todo.text %></li>
+      <% } %>
+    <% }); %>
   </ul>
 </div>
 

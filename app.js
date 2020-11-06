@@ -2,7 +2,8 @@
 const bodyParser = require("body-parser"),
   mongoose = require("mongoose"),
   express = require("express"),
-  app = express();
+  app = express(),
+  Todo = require("./models/todo.js");
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -17,9 +18,6 @@ mongoose
   })
   .then(() => console.log("Polaczono z serwerem bazdy danych Listy Zadan"))
   .catch((err) => console.log(err.message));
-
-const todoSchema = new mongoose.Schema({ text: String });
-const Todo = mongoose.model("Todo", todoSchema);
 
 //Strona startowa
 app.get("/", (req, res) => {
@@ -48,6 +46,7 @@ app.post("/todos", (req, res) => {
     } else {
       console.log("Nowe zadanie dodane do bazy danych:");
       console.log(newTodo);
+      res.redirect("back");
     }
   });
 });
