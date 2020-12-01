@@ -1,6 +1,26 @@
-#container {
-  width: 350px;
-  margin: 100px auto;
+body {
+  font-family: 'Lato', serif;
+  font-weight: 700;
+  background: linear-gradient(to left, #E2E2E2, #C9D6FF);
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0
+} 
+
+li {
+  background:white;
+  line-height: 40px;
+}
+
+li:nth-child(2n) {
+  background: lightgrey;
+}
+
+li > form {
+  display: inline;
 }
 
 .completed {
@@ -8,6 +28,9 @@
   text-decoration: line-through;
 }
 
-li > form {
-  display: inline;
+#container {
+  width: 350px;
+  margin: 100px auto;
 }
+
+

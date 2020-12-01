@@ -7,25 +7,22 @@
   </form>
   <ul>
     <% todos.forEach((todo) => { %> 
-      <% if(todo.isDone === true) { %>
-        <li>
+      <li>
+        <% if(todo.isDone === true) { %>
           <form class="updateForm" action="/todos/<%= todo._id %>?_method=PUT" method="POST">
-            <button class="updateButton">D</button>
+            <button class="updateButton"><i class="fas fa-check"></i></button>
           </form>
-          <form class="deleteForm" action="/todos/<%= todo._id %>?_method=DELETE" method="POST">
-            <button class="deleteButton">X</button>
-          </form> <span class="completed"><%= todo.text %></span>
-        </li>
-      <% } else { %>
-        <li>
+          <span class="completed"> <%= todo.text %></span>
+        <% } else { %>
           <form class="updateForm" action="/todos/<%= todo._id %>?_method=PUT" method="POST">
-            <button class="updateButton">D</button>
+            <button class="updateButton"><i class="far fa-circle"></i></button>
           </form>
-          <form class="deleteForm" action="/todos/<%= todo._id %>?_method=DELETE" method="POST">
-            <button class="deleteButton">X</button>
-          </form> <span><%= todo.text %></span>
-        </li>
-      <% } %>
+          <span> <%= todo.text %></span>
+        <% } %>
+        <form style="float: right;" class="deleteForm" action="/todos/<%= todo._id %>?_method=DELETE" method="POST">
+          <button class="deleteButton"><i class="fas fa-trash-alt"></i></button>
+        </form>
+      </li>
     <% }); %>
   </ul>
 </div>
