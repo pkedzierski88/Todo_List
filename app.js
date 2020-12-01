@@ -10,7 +10,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.use(methodOverride("_method"));
 
-const url = process.env.DATABASEURL || "mongodb://localhost:27017/todo_list_db";
+const url = 
+  process.env.DATABASEURL || 
+  "mongodb://localhost:27017/todo_list_db" ||
+  "mongodb+srv://piotrek:todopass2020@todo0.f3i4o.mongodb.net/todo_list_db_deployed?retryWrites=true&w=majority";
+
 mongoose
   .connect(url, {
     useNewUrlParser: true,
