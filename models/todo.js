@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 
-//Schemat wpisów do bazy danych
 const todoSchema = new mongoose.Schema({
     text: String,
     isDone: {
@@ -9,5 +8,4 @@ const todoSchema = new mongoose.Schema({
     },
   });
 
-  //Modelowanie i eksport schematu
  module.exports = mongoose.model("Todo", todoSchema);

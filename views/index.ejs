@@ -2,16 +2,29 @@
 
 <div id="container">
   <h1>Do Zrobienia:</h1>
-  <form action="/todos" method="POST">
-    <input type="text" name="text" placeholder="Dodaj nowe zadanie" maxlength="30" autocomplete="off" autofocus="autofocus" required/>
+  <form id="inputForm" action="/todos" method="POST">
+    <input type="text" name="text" placeholder="Dodaj nowe zadanie" maxlength="30" autocomplete="off" autofocus="autofocus" required>
   </form>
   <ul>
-    <!-- Iterujemy po todos i wypisujemy wszystkie rekordy w formie listy -->
     <% todos.forEach((todo) => { %> 
       <% if(todo.isDone === true) { %>
-        <li class="completed"><%= todo.text %> <span>X</span></li>
+        <li>
+          <form class="updateForm" action="/todos/<%= todo._id %>?_method=PUT" method="POST">
+            <button class="updateButton">D</button>
+          </form>
+          <form class="deleteForm" action="/todos/<%= todo._id %>?_method=DELETE" method="POST">
+            <button class="deleteButton">X</button>
+          </form> <span class="completed"><%= todo.text %></span>
+        </li>
       <% } else { %>
-        <li><%= todo.text %> <span>X</span></li>
+        <li>
+          <form class="updateForm" action="/todos/<%= todo._id %>?_method=PUT" method="POST">
+            <button class="updateButton">D</button>
+          </form>
+          <form class="deleteForm" action="/todos/<%= todo._id %>?_method=DELETE" method="POST">
+            <button class="deleteButton">X</button>
+          </form> <span><%= todo.text %></span>
+        </li>
       <% } %>
     <% }); %>
   </ul>

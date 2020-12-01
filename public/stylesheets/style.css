@@ -7,3 +7,7 @@
   color: grey;
   text-decoration: line-through;
 }
+
+li > form {
+  display: inline;
+}
