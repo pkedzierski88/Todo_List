@@ -1,9 +1,9 @@
 <%- include("partials/header.ejs") %>
 
 <div id="container">
-  <h1>Do Zrobienia:</h1>
+  <h2>Do Zrobienia:</h2>
   <form id="inputForm" action="/todos" method="POST">
-    <input type="text" name="text" placeholder="Dodaj nowe zadanie" maxlength="30" autocomplete="off" autofocus="autofocus" required>
+    <input type="text" name="text" placeholder="Dodaj Nowe Zadanie" maxlength="30" autocomplete="off" autofocus="autofocus" required>
   </form>
   <ul>
     <% todos.forEach((todo) => { %> 
@@ -15,11 +15,11 @@
           <span class="completed"> <%= todo.text %></span>
         <% } else { %>
           <form class="updateForm" action="/todos/<%= todo._id %>?_method=PUT" method="POST">
-            <button class="updateButton"><i class="far fa-circle"></i></button>
+            <button class="updateButton"><i class="far fa-circle updateButton"></i></button>
           </form>
           <span> <%= todo.text %></span>
         <% } %>
-        <form style="float: right;" class="deleteForm" action="/todos/<%= todo._id %>?_method=DELETE" method="POST">
+        <form class="deleteForm" action="/todos/<%= todo._id %>?_method=DELETE" method="POST">
           <button class="deleteButton"><i class="fas fa-trash-alt"></i></button>
         </form>
       </li>
