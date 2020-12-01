@@ -2,12 +2,14 @@
 const bodyParser = require("body-parser"),
   mongoose = require("mongoose"),
   express = require("express"),
+  methodOverride = require("method-override"),
   app = express(),
   Todo = require("./models/todo.js");
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(__dirname + "/public"));
+app.use(express.static("public"));
+app.use(methodOverride("_method"));
 
 //Konfigruacja bazy danych
 const url = process.env.DATABASEURL || "mongodb://localhost:27017/todo_list_db";
@@ -46,10 +48,13 @@ app.post("/todos", (req, res) => {
     } else {
       console.log("Nowe zadanie dodane do bazy danych:");
       console.log(newTodo);
-      res.redirect("back");
+      // res.redirect("back");
+      res.status(204).send();
     }
   });
 });
+
+//Delete
 
 //Serwer
 const port = process.env.PORT || 3000;
