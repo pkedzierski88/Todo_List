@@ -64,7 +64,7 @@ input:focus{
   text-decoration: line-through;
 }
 
-.deleteForm {
+.deleteForm, .editForm {
   float: right;
 }
 
@@ -78,15 +78,33 @@ input:focus{
   border: none;
   transition: 0.2s linear;
   opacity: 0;
-  outline: none;
+  outline: 1px solid #3c1053;
 }
 
-li:hover .deleteButton {
+.editButton {
+  background: #5691c8;
+  text-align: center;
+  color: white;
+  width: 0px;
+  height: 40px;
+  float: right;
+  border: none;
+  transition: 0.2s linear;
+  opacity: 0;
+  outline: 1px solid #3c1053;
+  margin-right: 7px;
+}
+
+.deleteButton:hover, .editButton:hover {
+  outline: 2px solid #3c1053;
+}
+
+li:hover .deleteButton, li:hover .editButton {
   width: 40px;
   opacity: 1;
 }
 
-.updateButton {
+.checkButton {
   border: none;
   background: none;
   outline: none;

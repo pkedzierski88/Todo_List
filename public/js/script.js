@@ -8,8 +8,8 @@ $("input[type='text']").keypress(function(event){
     }
 });
 
-$(".updateButton").on("click", function(){
-    $(".updateForm").submit();
+$(".checkButton").on("click", function(){
+    $(".checkForm").submit();
 });
 
 $(".deleteButton").on("click", function(){
