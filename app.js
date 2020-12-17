@@ -48,7 +48,7 @@ app.post("/todos", (req, res) => {
     } else {
       console.log("Nowe zadanie dodane do bazy danych:");
       console.log(newTodo);
-      res.redirect("back");
+      res.json(newTodo);
     }
   });
 });

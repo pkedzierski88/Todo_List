@@ -5,7 +5,7 @@
   <form id="inputForm" action="/todos" method="POST">
     <input type="text" name="todo[text]" placeholder="Dodaj do listy..." maxlength="30" autocomplete="off" autofocus="autofocus" required>
   </form>
-  <ul>
+  <ul id="toDoList">
     <% todos.forEach((todo) => { %> 
       <li>
         <form class="editForm">
