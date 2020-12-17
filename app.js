@@ -42,7 +42,7 @@ app.get("/todos", (req, res) => {
 
 //Create
 app.post("/todos", (req, res) => {
-  Todo.create(req.body, (err, newTodo) => {
+  Todo.create(req.body.todo, (err, newTodo) => {
     if (err) {
       console.log(err);
     } else {

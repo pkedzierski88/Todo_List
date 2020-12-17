@@ -31,16 +31,13 @@ li:nth-child(2n) {
   
 }
 
-li > form {
-  display: inline;
-}
 
 li:hover {
   outline: 1px solid #3c1053;
   outline-style: solid;
 }
 
-input {
+form#inputForm input {
   font-size: 18px;
   background: rgb(255, 195, 90);
   width: 100%;
@@ -49,11 +46,11 @@ input {
   border: 2px solid rgba(0, 0, 0, 0);
 }
 
-input::placeholder {
+form#inputForm input::placeholder {
   color: rgb(110, 110, 110);
 }
 
-input:focus{
+form#inputForm input:focus{
   background: lightyellow;
   outline: 2px solid #3c1053;
   outline-style: solid;
@@ -64,7 +61,20 @@ input:focus{
   text-decoration: line-through;
 }
 
-.deleteForm, .editForm {
+.editForm {
+  display: none;
+}
+
+.editForm>span {
+  padding-left: 2%; 
+  padding-right: 2%;
+}
+
+.checkForm, .deleteForm {
+  display: inline;
+}
+
+.deleteForm {
   float: right;
 }
 

@@ -3,11 +3,15 @@
 <div id="container">
   <h2>Do Zrobienia:</h2>
   <form id="inputForm" action="/todos" method="POST">
-    <input type="text" name="text" placeholder="Dodaj do listy..." maxlength="30" autocomplete="off" autofocus="autofocus" required>
+    <input type="text" name="todo[text]" placeholder="Dodaj do listy..." maxlength="30" autocomplete="off" autofocus="autofocus" required>
   </form>
   <ul>
     <% todos.forEach((todo) => { %> 
       <li>
+        <form class="editForm">
+          <span>Edytuj: </span><input type=text name=todo[edit] value="<%= todo.text %>" placeholder="Edytuj..." maxlength="30" autocomplete="off" required>
+          <button>Zapisz</button>
+        </form>
         <form class="checkForm" action="/todos/<%= todo._id %>?_method=PUT" method="POST">
           <button class="checkButton">
             <% if(todo.isDone === true) { %>
@@ -24,9 +28,7 @@
         <form class="deleteForm" action="/todos/<%= todo._id %>?_method=DELETE" method="POST">
           <button class="deleteButton"><i class="fas fa-trash-alt"></i></button>
         </form>
-        <form class="editForm" action="/todos/<%= todo._id %>?_method=PUT" method="POST">
-          <button class="editButton"><i class="fas fa-pencil-alt"></i></button>
-        </form>
+        <button class="editButton"><i class="fas fa-pencil-alt"></i></button>
       </li>
     <% }); %>
   </ul>
