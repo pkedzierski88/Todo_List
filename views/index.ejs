@@ -7,7 +7,7 @@
   </form>
   <ul id="toDoList">
     <% todos.forEach((todo) => { %> 
-      <li>
+      <li class="listGroupItem">
         <form class="editForm">
           <span>Edytuj: </span><input type=text name=todo[edit] value="<%= todo.text %>" placeholder="Edytuj..." maxlength="30" autocomplete="off" required>
           <button>Zapisz</button>
@@ -25,10 +25,10 @@
           </form>
           <span class="toDoText"><%= todo.text %></span>
         <% } %>
-        <form class="deleteForm" action="/todos/<%= todo._id %>?_method=DELETE" method="POST">
-          <button class="deleteButton"><i class="fas fa-trash-alt"></i></button>
+        <form class="deleteForm" action="/todos/<%= todo._id %>" method="POST">
+          <button type="submit" class="deleteButton"><i class="fas fa-trash-alt"></i></button>
         </form>
-        <button class="editButton"><i class="fas fa-pencil-alt"></i></button>
+        <!-- <button class="editButton"><i class="fas fa-pencil-alt"></i></button> -->
       </li>
     <% }); %>
   </ul>

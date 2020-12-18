@@ -81,7 +81,7 @@ app.delete("/todos/:id", (req, res) => {
       console.log(err);
     } else {
       console.log("Usunięto zadanie z listy.");
-      res.redirect("back");
+      res.json(todo);
     }
   })
 });

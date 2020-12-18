@@ -7,7 +7,7 @@
     }
 }(jQuery));
 
-
+//ADD
 $("#inputForm").submit(function (e) {
     e.preventDefault();
     let toDoItem = $(this).serialize();
@@ -36,14 +36,21 @@ $("#inputForm").submit(function (e) {
     });
 });
 
+//EDIT
 $("#toDoList").on("click", ".editButton", function(){
     $(this).siblings(".editForm").toggle();
     $(this).siblings(".editForm").children("input").focusTextToEnd();
 
 });
 
+//CHECK & UNCHECK
 $("#toDoList").on("submit", ".checkForm", function(e){
     e.preventDefault();
+    let actionUrl = $(this).attr("action");
+    $.ajax({
+        url: actionUrl,
+        type: "PUT"
+    });
     if($(this).children().children().hasClass("fa-check")){
         $(this).children().children().remove();
         $(this).children().append(`<i class="far fa-circle"></i>`);
@@ -52,15 +59,21 @@ $("#toDoList").on("submit", ".checkForm", function(e){
         $(this).children().append(`<i class="fas fa-check"></i>`);
     }
     $(this).siblings("span").toggleClass("completed");
-    let actionUrl = $(this).attr("action");
-    $.ajax({
-        url: actionUrl,
-        type: "PUT"
-    });
 });
 
 
-$(".deleteButton").on("click", function(){
-    $(".deleteForm").submit();
+//DELETE
+$("#toDoList").on("submit", ".deleteForm", function(e){
+    e.preventDefault();
+    let actionUrl = $(this).attr("action");
+    let $itemToDelete = $(this).parent();
+    $.ajax({
+        url: actionUrl,
+        type: "DELETE",
+        itemToDelete: $itemToDelete,
+        success: function(){
+            this.itemToDelete.remove();
+        }
+    });
 });
 
