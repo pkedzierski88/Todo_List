@@ -15,10 +15,6 @@ $("#inputForm").submit(function (e) {
         $("#toDoList").append(
             `
             <li>
-                <form class="editForm">
-                    <span>Edytuj: </span><input type=text name=todo[edit] value="${data.text}" placeholder="Edytuj..." maxlength="30" autocomplete="off" required>
-                    <button>Zapisz</button>
-                </form>
                 <form class="checkForm" action="/todos/${data._id}" method="POST">
                     <button class="checkButton">
                         <i class="far fa-circle"></i>
@@ -28,7 +24,6 @@ $("#inputForm").submit(function (e) {
                 <form class="deleteForm" action="/todos/${data._id}" method="POST">
                     <button class="deleteButton"><i class="fas fa-trash-alt"></i></button>
                 </form>
-                <button class="editButton"><i class="fas fa-pencil-alt"></i></button>
             </li>
             `
         );
@@ -36,12 +31,12 @@ $("#inputForm").submit(function (e) {
     });
 });
 
-//EDIT
-$("#toDoList").on("click", ".editButton", function(){
-    $(this).siblings(".editForm").toggle();
-    $(this).siblings(".editForm").children("input").focusTextToEnd();
+// //EDIT
+// $("#toDoList").on("click", ".editButton", function(){
+//     $(this).siblings(".editForm").toggle();
+//     $(this).siblings(".editForm").children("input").focusTextToEnd();
 
-});
+// });
 
 //CHECK & UNCHECK
 $("#toDoList").on("submit", ".checkForm", function(e){

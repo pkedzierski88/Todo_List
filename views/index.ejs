@@ -8,10 +8,10 @@
   <ul id="toDoList">
     <% todos.forEach((todo) => { %> 
       <li class="listGroupItem">
-        <form class="editForm">
+        <!-- <form class="editForm">
           <span>Edytuj: </span><input type=text name=todo[edit] value="<%= todo.text %>" placeholder="Edytuj..." maxlength="30" autocomplete="off" required>
           <button>Zapisz</button>
-        </form>
+        </form> -->
         <form class="checkForm" action="/todos/<%= todo._id %>" method="POST">
           <button class="checkButton">
             <% if(todo.isDone === true) { %>
