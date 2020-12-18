@@ -66,17 +66,17 @@ app.put("/todos/:id", (req, res) => {
             console.log(err);
           } else {
             console.log(updatedToto);
+            res.json(updatedToto);
           }
         });
       } 
     }
-    res.redirect("back");
   });
 });
 
 //Delete
 app.delete("/todos/:id", (req, res) => {
-  Todo.findByIdAndRemove(req.params.id, (err) => {
+  Todo.findByIdAndRemove(req.params.id, (err, todo) => {
     if(err) {
       console.log(err);
     } else {

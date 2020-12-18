@@ -12,18 +12,18 @@
           <span>Edytuj: </span><input type=text name=todo[edit] value="<%= todo.text %>" placeholder="Edytuj..." maxlength="30" autocomplete="off" required>
           <button>Zapisz</button>
         </form>
-        <form class="checkForm" action="/todos/<%= todo._id %>?_method=PUT" method="POST">
+        <form class="checkForm" action="/todos/<%= todo._id %>" method="POST">
           <button class="checkButton">
             <% if(todo.isDone === true) { %>
               <i class="fas fa-check"></i>
             </button>
           </form>
-          <span class="completed"><%= todo.text %></span>
+          <span class="toDoText completed"><%= todo.text %></span>
         <% } else { %>
               <i class="far fa-circle"></i>
             </button>
           </form>
-          <span><%= todo.text %></span>
+          <span class="toDoText"><%= todo.text %></span>
         <% } %>
         <form class="deleteForm" action="/todos/<%= todo._id %>?_method=DELETE" method="POST">
           <button class="deleteButton"><i class="fas fa-trash-alt"></i></button>

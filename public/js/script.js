@@ -33,9 +33,10 @@ $("input[type='text']").keypress(function(event){
                                 <button class="deleteButton"><i class="fas fa-trash-alt"></i></button>
                             </form>
                             <button class="editButton"><i class="fas fa-pencil-alt"></i></button>
-                      </li>
+                        </li>
                         `
                     );
+                    $("#inputForm").find("input").val("");
                 });
             });
         }
@@ -45,14 +46,25 @@ $("input[type='text']").keypress(function(event){
 $("#toDoList").on("click", ".editButton", function(){
     $(this).siblings(".editForm").toggle();
     $(this).siblings(".editForm").children("input").focusTextToEnd();
+
 });
 
-
-$(".checkButton").on("click", function(){
-    $(".checkForm").submit();
+$("#toDoList").on("submit", ".checkForm", function(e){
+    e.preventDefault();
+    if($(this).children().children().hasClass("fa-check")){
+        $(this).children().children().remove();
+        $(this).children().append(`<i class="far fa-circle"></i>`);
+    } else {
+        $(this).children().children().remove();
+        $(this).children().append(`<i class="fas fa-check"></i>`);
+    }
+    $(this).siblings("span").toggleClass("completed");
+    let actionUrl = $(this).attr("action");
+    $.ajax({
+        url: actionUrl,
+        type: "PUT"
+    });
 });
-
-
 
 
 $(".deleteButton").on("click", function(){
